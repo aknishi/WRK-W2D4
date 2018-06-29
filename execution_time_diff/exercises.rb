@@ -115,7 +115,38 @@ def anagrams4?(str1,str2)
   str2.each_char do |ch|
     hash2[ch] += 1
   end
-  hash1 == hash2
-  
-    
+  hash1 == hash2  
 end
+anagrams4?("elvis", "lives")
+
+def bad_two_sum?(arr,target)
+  arr.each_with_index do |el1,i1|
+    next if i1 == arr.length - 1
+    i2 = i1 + 1
+    while i2 < arr.length
+      return true if el1 + arr[i2] == target
+      i2 += 1 
+    end
+  end
+  false
+end
+
+arr = [1,3,5,4,6,7]
+
+def two_sum?(arr,target)
+  arr.sort
+  i = 0
+  j = -1
+  while i < arr.length/2
+    lowest = arr[i] + arr[i+1]
+    highest = arr[j] + arr[j-1]
+    return true if target == lowest || target == highest
+    return false if target < lowest || target > highest
+    i += 1
+    j -= 1
+  end
+  false
+end
+
+a = [1,-1,5,4,8,7]
+two_sum?(a,9)
